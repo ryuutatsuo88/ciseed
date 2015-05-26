@@ -33,12 +33,59 @@
 				</div>
 			</nav>
 			
+			<button id="update" class="btn btn-default">Update</button>
+			
+			<section>
+				<table class="table table-bordered table-hover">
+				  <thead>
+					<tr>
+					  <th>id</th>
+					  <th>Username</th>
+					  <th>password</th>
+					</tr>
+				  </thead>
+				  <tbody id="tbody">
+				  </tbody>
+				</table>
+			</section>
+			
 			
 		</div>
 	
 	<script>
 		(function() {
-			console.log($);
+			
+			function getStudents() {
+				$.ajax({
+					url: "student", 
+					success: function(data){
+						$("#tbody").empty()
+						$(data.students).each(function() {
+							$("#tbody").append('<tr>' +
+							'<th scope="row">'+ this.id +'</th>'+
+							'<td>'+ this.user_name +'</td>'+
+							'<td>'+ this.password +'</td>'+
+							'</tr>');
+						});
+					}
+				});
+			};
+			
+			function updateStudents() {
+				$.ajax({
+					url: "student/updatestudent", 
+					success: function(){
+						getStudents();
+					}
+				});
+			};
+			
+			$("#update").click(function() {
+				updateStudents();
+			});
+			
+			getStudents();
+			
 		})();
 	</script>
 	

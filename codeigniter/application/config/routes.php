@@ -39,6 +39,8 @@
 */
 
 $route['default_controller'] = "welcome";
+$route['student'] = 'student';
+$route['student/updatestudent'] = 'student/updatestudent';
 $route['404_override'] = '';
 
 $route['ciunit'] = "ciunit_controller/index";
