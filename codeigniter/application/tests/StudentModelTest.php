@@ -2,7 +2,6 @@
 
 class StudentModelTest extends CIUnit_Framework_TestCase
 {
-    private $user;
     
     protected function setUp()
     {
