@@ -21,7 +21,10 @@ class Student_model extends CI_Model
 			array_push($data, array("id"=>$row->id, "user_name"=>random_string('alnum', 5), "password"=>random_string('alnum', 12)) );
 		}
 		//update db and return back
-	    return $this->db->update_batch('Student', $data, 'id'); 
+	    $this->db->update_batch('Student', $data, 'id'); 
+	    
+	    //returns the number of rows changed 
+	    return $this->db->affected_rows();
 	}
     
     //returns all the students 
